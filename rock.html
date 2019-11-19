@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ROCK PAPER SCISSORS</title>
+    <style>
+        #rock {
+            background: url(rock.jpg) no-repeat;
+            background-size: cover;
+            width: 250px;
+            height: 200px;
+            font-style: normal;
+            font-size: large;
+            color: white;
+            font-weight: bolder;
+
+            font-size: 30px;
+        }
+
+        #paper {
+            background: url(paper.png) no-repeat;
+            background-size: cover;
+            width: 250px;
+            height: 200px;
+            font-style: normal;
+            font-size: large;
+            color: black;
+            font-weight: bolder;
+            font-size: 30px;
+        }
+
+        #scissors {
+
+            background-size: cover;
+            width: 250px;
+            height: 200px;
+            font-style: normal;
+            font-size: large;
+            color: white;
+            font-weight: bolder;
+            font-size: 30px;
+        }
+
+        body {
+            background: url(rock-paper-scissor-ft.jpg) no-repeat;
+            background-size: cover;
+            text-align: center;
+        }
+
+        button {
+            background-color: transparent;
+        }
+
+        h4 {
+            font-size: -webkit-xxx-large;
+            color: seashell;
+        }
+
+        p {
+            font-size: xx-large;
+            font-weight: bolder;
+            font-kerning: normal;
+            color: lightgoldenrodyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <h4>CHOOSE YOUR DESTINY</h4>
+        <button id='paper'>Paper</button>
+        <button id='scissors'>Scissors</button>
+        <button id='rock'>Rock</button>
+        <p class='p'></p>
+        <p class='p2'></p>
+        <p class='p3'></p>
+    </div>
+    <script>
+        let par = document.querySelector('.p');
+        let par2 = document.querySelector('.p2');
+        let par3 = document.querySelector('.p3');
+        let rock = document.getElementById('rock');
+        let paper = document.getElementById('paper');
+        let scissors = document.getElementById('scissors');
+
+
+        function computerPlay() {
+            let arr = ['rock', 'paper', 'scissors'];
+            return arr[Math.floor(Math.random() * 3)];
+        }
+        function playRound(playerselection, computerselection) {
+            let result = '';
+            if (playerselection == computerselection) {
+                par.textContent = 'It\'s draw!';
+                return 'It\'s draw!';
+            } else if (playerselection == 'rock' && computerselection == 'paper') {
+                par.textContent = 'You lose! Paper beats Rock';
+                result = 'computerwin';
+            } else if (playerselection == 'rock' && computerselection == 'scissors') {
+                par.textContent = 'You win! Rock beats Scissors';
+                result = 'playerwin';
+            } else if (playerselection == 'paper' && computerselection == 'rock') {
+                par.textContent = 'You win! Paper beats rock';
+                result = 'playerwin';
+            } else if (playerselection == 'paper' && computerselection == 'scissors') {
+                par.textContent = 'You lose! Scissors beats paper';
+                result = 'computerwin';
+            } else if (playerselection == 'scissors' && computerselection == 'rock') {
+                par.textContent = 'You lose! Rock beats Scissors';
+                result = 'computerwin';
+
+            } else if (playerselection == 'scissors' && computerselection == 'paper') {
+                par.textContent = 'You win! Scissors beats paper';
+                result = 'playerwin';
+            }
+            return result;
+        }
+        function startPlay1() {
+            let playerselection = 'rock';
+            let computerselection = computerPlay();
+            let winner = playRound(playerselection, computerselection);
+            if (winner == 'playerwin') {
+                playercnt += 1;
+                par2.textContent = 'player ' + playercnt + ' : ' + computercnt + ' computer'
+            } else if (winner == 'computerwin') {
+                computercnt += 1;
+                par2.textContent = 'player ' + playercnt + ' : ' + computercnt + ' computer'
+            } else if (winner = 'It\'s draw!') {
+                par2.textContent = 'player ' + playercnt + ' : ' + computercnt + ' computer'
+                return;
+
+            }
+            if (playercnt == 5) {
+                par2.textContent += ' (You win the Game! The account is reset)';
+                playercnt = 0;
+                computercnt = 0;
+            } else if (computercnt == 5) {
+                par2.textContent += ' (You lose the Game! The account is reset)';
+                playercnt = 0;
+                computercnt = 0;
+            }
+
+
+        }
+        function startPlay2() {
+            let playerselection = 'paper';
+            let computerselection = computerPlay();
+            let winner = playRound(playerselection, computerselection);
+            if (winner == 'playerwin') {
+                playercnt += 1;
+                par2.textContent = 'player ' + playercnt + ' : ' + computercnt + ' computer'
+            } else if (winner == 'computerwin') {
+                computercnt += 1;
+                par2.textContent = 'player ' + playercnt + ' : ' + computercnt + ' computer'
+            } else if (winner = 'It\'s draw!') {
+                par2.textContent = 'player ' + playercnt + ' : ' + computercnt + ' computer'
+                return;}
+                if (playercnt == 5) {
+                    par2.textContent += ' (You win the Game! The account is reset)';
+                    playercnt = 0;
+                    computercnt = 0;
+                } else if (computercnt == 5) {
+                    par2.textContent += ' (You lose the Game! The account is reset)';
+                    playercnt = 0;
+                    computercnt = 0;
+                }
+            
+
+
+
+        }
+        function startPlay3() {
+            let playerselection = 'scissors';
+            let computerselection = computerPlay();
+            let winner = playRound(playerselection, computerselection);
+            if (winner == 'playerwin') {
+                playercnt += 1;
+                par2.textContent = 'player ' + playercnt + ' : ' + computercnt + ' computer'
+            } else if (winner == 'computerwin') {
+                computercnt += 1;
+                par2.textContent = 'player ' + playercnt + ' : ' + computercnt + ' computer'
+            } else if (winner = 'It\'s draw!') {
+                par2.textContent = 'player ' + playercnt + ' : ' + computercnt + ' computer'
+                return;}
+                if (playercnt == 5) {
+                    par2.textContent += ' (You win the Game! The account is reset)';
+                    playercnt = 0;
+                    computercnt = 0;
+                } else if (computercnt == 5) {
+                    par2.textContent += ' (You lose the Game! The account is reset)';
+                    playercnt = 0;
+                    computercnt = 0;
+                }
+            
+
+
+
+        }
+
+        let playercnt = 0;
+        let computercnt = 0;
+        rock.addEventListener('click', startPlay1);
+        paper.addEventListener('click', startPlay2);
+        scissors.addEventListener('click', startPlay3);
+    </script>
+</body>
+
+</html>
